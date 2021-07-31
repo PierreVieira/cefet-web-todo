@@ -7,7 +7,7 @@ html, body {
 body {
   text-align: center;
   background-image:
-    url(imgs/fundo.png),
+    url(../imgs/fundo.png),
     radial-gradient(farthest-corner at 92px 45px , #00b4ea 10%, #e289a6 72%);
   background-size: cover;
   background-position-x: 50%;
