@@ -8,12 +8,12 @@ const listTasks = new ListTasks()
 
 function addTaskInPage(task) {
     elements.listTasks.appendChild(task.getElement())
+    listTasks.push(task)
 }
 
 function addTasksInPage(tasks) {
     tasks.forEach(task => {
         addTaskInPage(task)
-        listTasks.push(task)
     })
 }
 
@@ -57,11 +57,13 @@ function restartInput() {
     returnFocus()
 }
 
+function buttonAddClick() {
+    createNewTaskFromInput()
+    restartInput()
+}
+
 function setupNewTaskButton() {
-    elements.newTaskButton.addEventListener(EventType.CLICK, _ => {
-        createNewTaskFromInput()
-        restartInput()
-    })
+    elements.newTaskButton.addEventListener(EventType.CLICK, buttonAddClick)
 }
 
 function filterElements(taskType) {
@@ -78,6 +80,15 @@ function setupFilter() {
     })
 }
 
+function setupEnterButton() {
+    elements.inputTaskText.addEventListener(EventType.KEY_PRESS, e => {
+        if (e.key === 'Enter'){
+            buttonAddClick()
+        }
+    })
+}
+
 initializeTasksInPage()
 setupNewTaskButton()
 setupFilter()
+setupEnterButton()
