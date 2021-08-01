@@ -1,4 +1,4 @@
-import {classes} from './enums/dom/classes.js'
+import {classes} from './dom/identifiers/classes.js'
 
 export class Task {
     #text
