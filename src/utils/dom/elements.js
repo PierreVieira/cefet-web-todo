@@ -8,5 +8,6 @@ export const elements = Object.freeze({
     listTasks: selectById(ids.LIST_TASKS),
     newTaskButton: selectById(ids.INCLUDE_NEW_TASK),
     inputTaskOption: selectById(ids.NEW_TASK_TYPE),
-    inputTaskText: selectById(ids.NEW_TASK_TEXT)
+    inputTaskText: selectById(ids.NEW_TASK_TEXT),
+    inputTaskFilter: selectById(ids.CATEGORY_FILTER)
 })
