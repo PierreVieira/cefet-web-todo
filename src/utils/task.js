@@ -1,4 +1,5 @@
 import {classes} from './dom/identifiers/classes.js'
+import {EventType} from './enums/event-type.js'
 
 export class Task {
     #text
@@ -26,6 +27,10 @@ export class Task {
         this.#retainedInTheFilter = retainedInTheFilter
     }
 
+    #toggleFinish() {
+        this.#finished = !this.#finished
+    }
+
     #getTaskClasses() {
         const taskClasses = [`categoria-${this.#type}`, classes.ITEM_TASK]
         if (this.#finished) {
@@ -41,6 +46,16 @@ export class Task {
         const taskElement = document.createElement('li')
         taskElement.innerHTML = `${this.#text}`
         taskClasses.forEach(value => taskElement.classList.add(value))
+        taskElement.addEventListener(EventType.CLICK, e => this.#finishedTaskControl(e))
         return taskElement
+    }
+
+    #finishedTaskControl(e) {
+        this.#toggleFinish()
+        if (this.#finished) {
+            e.currentTarget.classList.add(classes.MARKED_TASK)
+        } else {
+            e.currentTarget.classList.remove(classes.MARKED_TASK)
+        }
     }
 }

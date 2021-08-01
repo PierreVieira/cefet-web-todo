@@ -66,12 +66,20 @@ function setupNewTaskButton() {
     elements.newTaskButton.addEventListener(EventType.CLICK, buttonAddClick)
 }
 
-function filterElements(taskType) {
+function cleanAllTasks() {
     elements.listTasks.innerHTML = ''
-    listTasks.applyClassFilter(taskType)
+}
+
+function refreshAllTasks() {
+    cleanAllTasks()
     listTasks.forEach(task => {
         elements.listTasks.appendChild(task.getElement())
     })
+}
+
+function filterElements(taskType) {
+    listTasks.applyClassFilter(taskType)
+    refreshAllTasks()
 }
 
 function setupFilter() {
@@ -82,7 +90,7 @@ function setupFilter() {
 
 function setupEnterButton() {
     elements.inputTaskText.addEventListener(EventType.KEY_PRESS, e => {
-        if (e.key === 'Enter'){
+        if (e.key === 'Enter') {
             buttonAddClick()
         }
     })
